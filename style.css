@@ -1,0 +1,135 @@
+section{
+    position: absolute;
+    background-image: url("bg.jpeg");
+    background-size: cover;
+    height:100vh;
+    width:100vw;
+    
+    bottom:0px;
+    
+}
+
+#character{
+    position:absolute;
+   bottom:0;
+   
+    left:50px;
+    height:160px;
+    width: 134px;
+  
+} 
+#character1{
+        position:absolute;
+        bottom:0px;
+        right:50px;
+        height:160px;
+        width: 134px;
+       
+    
+}
+#net{
+    position:absolute;
+    bottom: 0;
+    height:50%;
+    width:30px;
+    margin-top:22%; 
+    margin-left:50%;
+    background-color: aliceblue;
+}
+#ball{
+    position:absolute;
+    height:80px;
+    width:80px;
+    bottom:0px;
+   
+    
+}
+
+
+/* h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(223, 123, 10);
+    text-align: center;
+    background-color: blue;
+    
+} */
+h2 {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 72px; 
+    font-weight: bold;
+    color: rgba(233, 220, 107, 0.897); 
+    text-align: center;
+    background-color: #5bc0de;
+    padding: 20px 0; 
+    margin: 0; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); 
+    
+}
+
+
+h2:hover {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
+
+#player1Score,
+#player2Score {
+    font-size: 30px;
+    font-family: 'Bangers', cursive; /* Change the font family */
+    color: black; /* Change the font color */
+    text-align: center;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow */
+}
+
+/* Style the score container */
+#score {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Style the individual buttons */
+button {
+    margin: 0px 20px 0px 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Add rounded corners */
+    transition: background-color 0.3s ease; /* Add a smooth background color transition */
+}
+
+/* Style the buttons on hover */
+button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow on hover */
+}
+
+/* Style the start button with a different color */
+#startButton {
+    background-color: #28a745; /* Green color for the start button */
+}
+#pauseButton {
+    background-color: #ffc107; /* Yellow color for the pause button */
+}
+
+/* Style the reset button with a different color */
+#resetButton {
+    background-color: #dc3545; /* Red color for the reset button */
+}
+
+
+
+
+
