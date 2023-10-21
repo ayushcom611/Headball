@@ -189,7 +189,7 @@ function updateBallPosition() {
         return; // Don't update position if the game is paused
     }
 
-    const maxBallSpeed = 12;
+    const maxBallSpeed = 13;
     if (Math.abs(ballSpeedX) > maxBallSpeed) {
         ballSpeedX = maxBallSpeed * Math.sign(ballSpeedX);
     }
@@ -239,7 +239,8 @@ function updateBallPosition() {
         // Check if the collision point is in the upper or lower half of the character
         if (ballPositionY + ball.offsetHeight <= characterTopHalf) {
 
-            ballSpeedY = -Math.abs(ballSpeedY);
+            ballSpeedY = -Math.abs(ballSpeedY)*1.3;
+          
             ballPositionY = character.offsetTop - ball.offsetHeight;
             headsounds();
 
@@ -247,7 +248,7 @@ function updateBallPosition() {
             // Ball is in the lower half, so it should go down
             const collisionPoint = character.offsetTop + character.clientHeight - ballPositionY;
             // Move the ball just below the character
-            ballSpeedY = Math.abs(ballSpeedY) * 2 // Make the ball go down
+            ballSpeedY = Math.abs(ballSpeedY)*1.3 // Make the ball go down
         }
 
         ballSpeedX = direction * (Math.abs(ballSpeedX) + 0.3); // Increase ball speed
@@ -273,18 +274,18 @@ function updateBallPosition() {
             // Ball is in the upper half, so it should go up
             const collisionPoint = ballPositionY + ball.offsetHeight - character1.offsetTop;
             // Move the ball just above the character
-            ballSpeedY = -Math.abs(ballSpeedY);
-            ballPositionY = character1.offsetTop - ball.offsetHeight + 1;
+            ballSpeedY = -Math.abs(ballSpeedY)*1.3;
+            ballPositionY = character1.offsetTop - ball.offsetHeight ;
             headsounds();
             // Make the ball go up
         } else {
             // Ball is in the lower half, so it should go down
             const collisionPoint = character1.offsetTop + character1.clientHeight - ballPositionY;
             // Move the ball just below the character
-            ballSpeedY = Math.abs(ballSpeedY) * 1.2; // Make the ball go down
+            ballSpeedY = Math.abs(ballSpeedY)*1.3 ; // Make the ball go down
         }
 
-        ballSpeedX = direction * (Math.abs(ballSpeedX) + 0.3); // Increase ball speed
+        ballSpeedX = direction * (Math.abs(ballSpeedX) + 0.5); // Increase ball speed
     }
     // Collision detection for net
     else if (
@@ -307,14 +308,14 @@ function updateBallPosition() {
             //   const collisionPoint = ballPositionY + ball.offsetHeight - net.offsetTop;
             // Move the ball just above the character
             playcollisionsound();
-            ballSpeedY = -Math.abs(ballSpeedY) * 1.5; // Make the ball go up
+            ballSpeedY = -Math.abs(ballSpeedY) * 1.3; // Make the ball go up
 
 
         } else {
             // Ball is in the lower half, so it should go down
             // Move the ball just below the character
             playcollisionsound();
-            ballSpeedY = Math.abs(ballSpeedY) * 1.5; // Make the ball go down
+            ballSpeedY = Math.abs(ballSpeedY) * 1.3; // Make the ball go down
 
 
         }
@@ -375,9 +376,9 @@ function updateBallPosition() {
             }
             const playAgain = confirm(`${winner} wins! Do you want to play again?`);
             if (playAgain) {
-                resetgame(); // Reset the game if the user wants to play again
+                resetgames(); // Reset the game if the user wants to play again
             } else {
-                resetgame();
+                resetgames();
                 // You can perform any other action here or end the game
             }
 
