@@ -7,10 +7,10 @@ const characterWidth = character.clientWidth;
 let player1Score = 0;
 let player2Score = 0;
 
-const winningScore = 10; // Adjust as needed
+const winningScore = 2; // Adjust as needed
 
-let player1Name = prompt("Enter Player 1's Name:") || "Player 1"
-let player2Name = prompt("Enter Player 2's Name:") || "Player 2";
+let player1Name = prompt("Enter Player 1's Name:") || "Akku"
+let player2Name = prompt("Enter Player 2's Name:") || "Bakku";
 document.getElementById("player1Score").textContent = player1Name;
 document.getElementById("player2Score").textContent = player2Name;
 
@@ -167,7 +167,7 @@ let ballSpeedX = 4; // Horizontal speed of the ball
 let ballSpeedY = 4; // Vertical speed of the ball
 
 // Define the screen width and height
-const screenWidth1 = window.innerWidth-20;
+const screenWidth1 = window.innerWidth - 20;
 const screenHeight = window.innerHeight;
 
 // Define the initial ball speed
@@ -186,10 +186,10 @@ let ballPositionY = initialBallPositionY;
 
 //main game function
 function updateBallPosition() {
-    if (isGamePaused ) {
+    if (isGamePaused) {
         return; // Don't update position if the game is paused
     }
-    
+
     const maxBallSpeed = 12;
     if (Math.abs(ballSpeedX) > maxBallSpeed) {
         ballSpeedX = maxBallSpeed * Math.sign(ballSpeedX);
@@ -204,23 +204,24 @@ function updateBallPosition() {
     if (ballPositionX + ball.offsetWidth >= screenWidth1) {
         // If the ball hits the right edge, reverse its horizontal speed
         ballSpeedX = -ballSpeedX;
-        
-        ballPositionX = ballPositionX-30;
+
+        ballPositionX = ballPositionX - 30;
     } else if (ballPositionX <= 0) {
         // If the ball hits the left edge, reverse its horizontal speed
         ballSpeedX = -ballSpeedX;
-        ballPositionX = ballPositionX+30;
+        ballPositionX = ballPositionX + 30;
     }
 
-    
+
 
     // Bounce the ball off the left and right edges of the screen
     if (ballPositionX + ball.clientWidth >= screenWidth1 || ballPositionX <= 0) {
-        ballSpeedX = -ballSpeedX ;}
-   
-    
+        ballSpeedX = -ballSpeedX;
+    }
+
+
     if (ballPositionY + ball.offsetHeight >= screenHeight || ballPositionY <= 0) {
-        ballSpeedY = -ballSpeedY ;
+        ballSpeedY = -ballSpeedY;
     }
     // Collision detection for character
     if (
@@ -274,7 +275,7 @@ function updateBallPosition() {
             const collisionPoint = ballPositionY + ball.offsetHeight - character1.offsetTop;
             // Move the ball just above the character
             ballSpeedY = -Math.abs(ballSpeedY);
-            ballPositionY = character1.offsetTop - ball.offsetHeight+1;
+            ballPositionY = character1.offsetTop - ball.offsetHeight + 1;
             headsounds();
             // Make the ball go up
         } else {
@@ -315,7 +316,7 @@ function updateBallPosition() {
             // Move the ball just below the character
             playcollisionsound();
             ballSpeedY = Math.abs(ballSpeedY) * 1.5; // Make the ball go down
-            
+
 
         }
         //   playcollisionsound();
@@ -331,7 +332,7 @@ function updateBallPosition() {
     // Inside your collision detection code
     function resetballposition() {
         randomPositionX = Math.random() * (maxPositionX - minPositionX) + minPositionX;
-        
+
         initialBallPositionX = randomPositionX;
         ballPositionX = initialBallPositionX;
         ballPositionY = initialBallPositionY;
@@ -342,7 +343,7 @@ function updateBallPosition() {
     function resetgame() {
         player1Score = 0;
         player2Score = 0;
-        
+
         resetballposition();
     }
 
@@ -363,31 +364,31 @@ function updateBallPosition() {
         }
 
         // Check if either player has reached the winning score
-        
-            // One of the players has won, reset the game
-            if (player1Score >= winningScore || player2Score >= winningScore) {
-                gameoversound();
-                let winner = "";
-                if (player1Score > player2Score) {
-                    winner = $(player1Name);
-                } else {
-                    winner = $(player2Name);
-                }
-                const playAgain = confirm(`${winner} wins! Do you want to play again?`);
-                if (playAgain) {
-                    resetgame(); // Reset the game if the user wants to play again
-                } else {
-                    resetgame();
-                    // You can perform any other action here or end the game
-                }
-            
+
+        // One of the players has won, reset the game
+        if (player1Score >= winningScore || player2Score >= winningScore) {
+            gameoversound();
+            let winner = "";
+            if (player1Score > player2Score) {
+                winner = player1Name;
+            } else {
+                winner = player2Name;
+            }
+            const playAgain = confirm(`${winner} wins! Do you want to play again?`);
+            if (playAgain) {
+                resetgame(); // Reset the game if the user wants to play again
+            } else {
+                resetgame();
+                // You can perform any other action here or end the game
+            }
+
 
         } else {
-             // Set to true to pause the game
+            // Set to true to pause the game
             // After 2 seconds, set to false to resume the game
-                resetballposition(); // Reset the game if the user wants to play again
-           
-            
+            resetballposition(); // Reset the game if the user wants to play again
+
+
         }
     }
     ball.style.left = ballPositionX + "px";
@@ -422,8 +423,8 @@ startButton.addEventListener("click", () => {
         toggleGameState();
         gameoversound();
         gameSound.play();
-        
-        
+
+
     }
 });
 
@@ -431,7 +432,7 @@ startButton.addEventListener("click", () => {
 function resetgames() {
     player1Score = 0;
     player2Score = 0;
-    randomPositionX = Math.random() * (maxPositionX - minPositionX) + minPositionX ;
+    randomPositionX = Math.random() * (maxPositionX - minPositionX) + minPositionX;
     initialBallPositionX = randomPositionX;
     ballPositionX = initialBallPositionX;
     ballPositionY = initialBallPositionY;
@@ -441,7 +442,7 @@ function resetgames() {
     document.getElementById("player2Score").textContent = `${player2Name}: ${player2Score}`;
 
     gameoversound();
-    
+
 }
 resetButton.addEventListener("click", resetgames);
 
