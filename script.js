@@ -11,7 +11,8 @@ const winningScore = 10; // Adjust as needed
 
 let player1Name = prompt("Enter Player 1's Name:") || "Player 1"
 let player2Name = prompt("Enter Player 2's Name:") || "Player 2";
-
+document.getElementById("player1Score").textContent = player1Name;
+document.getElementById("player2Score").textContent = player2Name;
 
 
 
@@ -436,10 +437,10 @@ function resetgames() {
     ballPositionY = initialBallPositionY;
     ballSpeedX = initialBallSpeedX;
     ballSpeedY = initialBallSpeedY;
-    gameoversound();
-    updatePlayerNames();
-  
+    document.getElementById("player1Score").textContent = `${player1Name}: ${player1Score}`;
+    document.getElementById("player2Score").textContent = `${player2Name}: ${player2Score}`;
 
+    gameoversound();
     
 }
 resetButton.addEventListener("click", resetgames);
