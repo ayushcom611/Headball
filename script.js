@@ -7,13 +7,12 @@ const characterWidth = character.clientWidth;
 let player1Score = 0;
 let player2Score = 0;
 
-const winningScore = 2; // Adjust as needed
+const winningScore = 5; // Adjust as needed
 
 let player1Name = prompt("Enter Player 1's Name:") || "Akku"
 let player2Name = prompt("Enter Player 2's Name:") || "Bakku";
 document.getElementById("player1Score").textContent = player1Name;
 document.getElementById("player2Score").textContent = player2Name;
-
 
 
 
