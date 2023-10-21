@@ -430,8 +430,6 @@ startButton.addEventListener("click", () => {
 function resetgames() {
     player1Score = 0;
     player2Score = 0;
-    document.getElementById("player1Score").textContent = $(player1Name);
-    document.getElementById("player2Score").textContent = $(player2Name);
     randomPositionX = Math.random() * (maxPositionX - minPositionX) + minPositionX ;
     initialBallPositionX = randomPositionX;
     ballPositionX = initialBallPositionX;
